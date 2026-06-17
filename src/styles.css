@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #e8f3ea;
+  background: #0f1b2d;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.board-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #1f5f46 #0f1b2d;
+}
+
+.flip-card {
+  animation: cardFlipIn 420ms ease-out both;
+  perspective: 800px;
+}
+
+.flip-card-face {
+  animation: cardFaceTurn 420ms ease-out both;
+  backface-visibility: hidden;
+}
+
+.card-back::before {
+  background:
+    linear-gradient(135deg, rgba(217, 234, 215, 0.22) 25%, transparent 25%) 0 0 / 18px 18px,
+    linear-gradient(225deg, rgba(217, 234, 215, 0.22) 25%, transparent 25%) 0 0 / 18px 18px;
+  border-radius: 0.55rem;
+  content: "";
+  inset: 0.75rem;
+  position: absolute;
+}
+
+@keyframes cardFlipIn {
+  from {
+    opacity: 0;
+    transform: translateX(-22px) rotateY(88deg) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes cardFaceTurn {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
